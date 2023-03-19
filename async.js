@@ -41,10 +41,17 @@
 // what are disadvantage of syn programming and what are the advantage of asyn programming 
 // what are callback functions and how do they work in async programming 
 // what are callback hell ? What all problems callback hell create
-setTimeout(function () {
+
+// settimeout1
+setTimeout(
+function () {
   console.log("hello world");
+
+  // settimeout2
   setTimeout( function () {
     console.log("I am getting executed 2 second after hello world");
+
+    // settimeout3
     setTimeout( function () {
         console.log("& second after previou log");
     },
@@ -53,4 +60,11 @@ setTimeout(function () {
   }
     , 2000);
 }, 3000);
+console.log("Hi");
+
+function logHello() {
+  console.log("Hello world");
+}
+// You want to print hello world after 3second
+setTimeout(logHello,3000);
 console.log("Hi");
