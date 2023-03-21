@@ -68,3 +68,29 @@ function logHello() {
 // You want to print hello world after 3second
 setTimeout(logHello,3000);
 console.log("Hi");
+
+// Write all your work that you want to do when a async function is completed 
+//inside a callback function
+function callback() {
+
+  console.log("Hello World");
+};
+
+// JS will execute this code async way 
+// This will print hello world message after 3s
+function sayHello (callback) {
+  setTimeout(callback, 3000);
+}
+
+// We are executing sayHello in async away 
+sayHello(callback); 
+
+// Syncornous 
+console.log("Hi"); // This line will be executed after 3second
+var a = 10;
+while( a <1000) {
+  console.log("Hi");
+}
+
+
+

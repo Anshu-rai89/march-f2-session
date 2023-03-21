@@ -1,5 +1,6 @@
 var score;
 
+
 function OpeningCeremony (race100M, longJump, highJump, awardCermony) {
     setTimeout(function () {
       console.log("Let the games begin");
@@ -91,7 +92,7 @@ function AwardCeremony(score) {
 }
 
 
-//OpeningCeremony() → Race100M() → LongJump() → HighJump() → AwardCeremony()
+//OpeningCeremony() → Race100M() → LongJump() → LongJump() → AwardCeremony()
 
 
-OpeningCeremony(Race100M, LongJump, HighJump , AwardCeremony);
+OpeningCeremony(Race100M, LongJump, LongJump, AwardCeremony);
