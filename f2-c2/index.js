@@ -92,7 +92,16 @@ function AwardCeremony(score) {
 }
 
 
-//OpeningCeremony() → Race100M() → LongJump() → LongJump() → AwardCeremony()
+OpeningCeremony(Race100M,LongJump, HighJump, AwardCeremony ) /// → Race100M() → LongJump() → LongJump() → AwardCeremony()
+
+/**
+ *  Promise is a JS object which promise you to return a data after some time
+ */
 
 
-OpeningCeremony(Race100M, LongJump, LongJump, AwardCeremony);
+
+OpeningCeremony();
+Race100M();
+LongJump();
+HighJump();
+AwardCeremony();
