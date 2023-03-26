@@ -46,70 +46,79 @@ const { resolve } = require("path");
 // // what are callback functions and how do they work in async programming 
 // // what are callback hell ? What all problems callback hell create
 
-// // settimeout1
-// setTimeout(
-// function () {
-//   console.log("hello world");
+// settimeout1
+setTimeout(
+function () {
+  console.log("hello world");
 
-//   // settimeout2
-//   setTimeout( function () {
-//     console.log("I am getting executed 2 second after hello world");
+  // settimeout2
+  setTimeout( function () {
+    console.log("I am getting executed 2 second after hello world");
 
-//     // settimeout3
-//     setTimeout( function () {
-//         console.log("& second after previou log");
-//     },
-//     7000);
+    // settimeout3
+    setTimeout( function () {
+        console.log("& second after previou log");
+    },
+    7000);
    
-//   }
-//     , 2000);
-// }, 3000);
-// console.log("Hi");
+  }
+    , 2000);
+}, 3000);
+console.log("Hi");
 
-// function logHello() {
-//   console.log("Hello world");
-// }
-// // You want to print hello world after 3second
-// setTimeout(logHello,3000);
-// console.log("Hi");
+function logHello() {
+  console.log("Hello world");
+}
+// You want to print hello world after 3second
+setTimeout(logHello,3000);
+console.log("Hi");
 
-// // Write all your work that you want to do when a async function is completed 
-// //inside a callback function
-// function callback() {
+// Write all your work that you want to do when a async function is completed 
+//inside a callback function
+function callback() {
 
-//   console.log("Hello World");
-// };
+  console.log("Hello World");
+};
 
-// // JS will execute this code async way 
-// // This will print hello world message after 3s
-// function sayHello (callback) {
-//   setTimeout(callback, 3000);
-// }
+// JS will execute this code async way 
+// This will print hello world message after 3s
+function sayHello (callback) {
+  setTimeout(callback, 3000);
+}
 
-// // We are executing sayHello in async away 
-// sayHello(callback); 
+// We are executing sayHello in async away 
+sayHello(callback); 
 
-// // Syncornous 
-// console.log("Hi"); // This line will be executed after 3second
-// var a = 10;
-// while( a <1000) {
-//   console.log("Inside loop");
-// }
+// Syncornous 
+console.log("Hi"); // This line will be executed after 3second
+var a = 10;
+while( a <1000) {
+  console.log("Inside loop");
+}
 
 // We want to print hello world after 3 second
 
-var promise = new Promise(function (resolvePromise, rejectPromise) {
-   setTimeout(() => {
-    resolvePromise("Rejected after 3 seconds");
-   }, 3000);
-});
+var promise = new Promise(function (resolve, reject) {
+   setTimeout(function () {
+  var randomNumber = Math.floor(Math.random() * 20);
+
+  if (randomNumber > 10) {
+    resolve(randomNumber);
+  } else {
+    reject(randomNumber);
+  }
+  reject("Error");
+}, 3000);});
 
 
 function sayHello() {
   return promise;
 }
 
-sayHello().then(function(data) {
+var result = sayHello();
+
+
+result.then(function(data) {
   console.log("Hello world",data);
 }).catch(function(err) {
   console.log("error in say hello");

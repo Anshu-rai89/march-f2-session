@@ -1,4 +1,5 @@
 function OpeningCeremony() {
+  console.log("Inside opening cermony");
     var promise = new Promise(function(resolve) {
         setTimeout(function () {
           console.log("Let the games begin");
@@ -12,8 +13,12 @@ function OpeningCeremony() {
 }
 
 function Race100M(score) {
-    var promise = new Promise(function(resolve) {
+    console.log("Inside Race100M");
+
+    var promise = new Promise(function(resolve, reject) {
         setTimeout(function () {
+
+          console.log("Inside Race100M");
           var redSeconds = Math.floor(Math.random() * 6) + 10; // 11
           var blueSeconds = Math.floor(Math.random() * 6) + 10; //11
           var yellowSeconds = Math.floor(Math.random() * 6) + 10; //15
@@ -45,7 +50,7 @@ function Race100M(score) {
 }
 
 function LongJump(score) {
-
+    console.log("Inside LongJump");
 return new Promise(function( resolve) {
     setTimeout(function () {
         var colors = ["red", "green", "yellow", "blue"];
@@ -64,7 +69,7 @@ return new Promise(function( resolve) {
 }
 
 function HighJump(score) {
-
+  console.log("Inside high jump");
     return new Promise(function(resolve) {
         var colors = ["red", "green", "yellow", "blue"];
         var color = prompt("Enter winner color").trim(); //"" , null
@@ -86,6 +91,8 @@ function HighJump(score) {
 }
 
 function AwardCeremony(score) {
+    console.log("Inside AwardCeremony");
+
   // {red : 120, blue: 100, green : 90, yellow: 130}
 
   var scoresArray = [
@@ -105,14 +112,24 @@ function AwardCeremony(score) {
   console.log(`${scoresArray[2].color} came third ${scoresArray[2].score}`);
 }
 
-OpeningCeremony().then(function(score){
-    return Race100M(score);
-}).then(function(score) {
-     return LongJump(score);
-}).then(function(score) {
-    return  HighJump(score);
-}).then(function(score) {
-    AwardCeremony(score);
-}).catch(function(error) {
+async function executeFunctions() {
+  try{
+  var score = await OpeningCeremony();
+  score = await Race100M(score);
+  score = await LongJump(score);
+  score = await HighJump(score);
+   AwardCeremony(score);
+  }catch(error) {
     console.log(error);
-})
+  }
+}
+
+executeFunctions();
+
+console.log("Hello i am a log getting executed");
+
+function add(a, b) {
+  return a+b;
+}
+
+add(4,5);

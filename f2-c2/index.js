@@ -1,16 +1,16 @@
 var score;
 
 
-function OpeningCeremony (race100M, longJump, highJump, awardCermony) {
-    setTimeout(function () {
-      console.log("Let the games begin");
-      score = { red: 0, blue: 0, green: 0, yellow: 0 };
+function OpeningCeremony(race100M, longJump, highJump, awardCermony, party) {
+  setTimeout(function () {
+    console.log("Let the games begin");
+    score = { red: 0, blue: 0, green: 0, yellow: 0 };
 
-      race100M(score, longJump, highJump, awardCermony);
-    }, 1000);
+    race100M(score, longJump, highJump, awardCermony);
+  }, 1000);
 }
 
-function Race100M(score, longJump, highJump, awardCermony) {
+function Race100M(score, longJump, highJump, awardCermony, party) {
   setTimeout(function () {
     var redSeconds = Math.floor(Math.random() * 6) + 10; // 11
     var blueSeconds = Math.floor(Math.random() * 6) + 10; //11
@@ -39,7 +39,7 @@ function Race100M(score, longJump, highJump, awardCermony) {
 }
 
 
-function LongJump(score, highJump, awardCermony) {
+function LongJump(score, highJump, awardCermony, party) {
   setTimeout(function () {
     var colors = ["red", "green", "yellow", "blue"];
 
@@ -54,7 +54,7 @@ function LongJump(score, highJump, awardCermony) {
   }, 2000);
 }
 
-function HighJump(score, awardCermony) {
+function HighJump(score, awardCermony, party) {
   var colors = ["red", "green", "yellow", "blue"];
   var color = prompt("Enter winner color").trim(); //"" , null
   console.log("High Jump color", color);
@@ -71,7 +71,7 @@ function HighJump(score, awardCermony) {
   awardCermony(score);
 }
 
-function AwardCeremony(score) {
+function AwardCeremony(score, party) {
     // {red : 120, blue: 100, green : 90, yellow: 130}
     
     var scoresArray = [
@@ -88,7 +88,7 @@ function AwardCeremony(score) {
     console.log(`${scoresArray[1].color} came second ${scoresArray[1].score}`);
     console.log(`${scoresArray[2].color} came third ${scoresArray[2].score}`);
 
-
+   party();
 }
 
 
